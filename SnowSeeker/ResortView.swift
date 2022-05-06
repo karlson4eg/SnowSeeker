@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ResortView: View {
+    
     let resort: Resort
     
     var body: some View {
