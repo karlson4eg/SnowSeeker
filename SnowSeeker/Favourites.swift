@@ -8,13 +8,18 @@
 import Foundation
 
 
-class Favourites: ObservableObject {
+class Favourites: ObservableObject, Codable {
     private var resorts: Set<String>
-    private let saveKey = "Favourites"
+    //private let saveKey = "Favourites"
+    private var savePath = FileManager.documentsDirectory.appendingPathComponent("FavouriteResorts")
     
     init() {
-        //load our saved data
-        resorts = []
+        do {
+            let data = try Data(contentsOf: savePath)
+            resorts = try JSONDecoder().decode(Set<String>.self, from: data)
+        } catch {
+            resorts = []
+        }
     }
     func contains(_ resort: Resort) -> Bool {
         resorts.contains(resort.id)
@@ -34,7 +39,11 @@ class Favourites: ObservableObject {
     }
     
     func save() {
-        // write out our data
-        
+        do {
+            let data = try JSONEncoder().encode(resorts)
+            try data.write(to: savePath, options: [.atomicWrite, .completeFileProtection])
+        } catch {
+            print("Unable to save data")
+        }
     }
 }

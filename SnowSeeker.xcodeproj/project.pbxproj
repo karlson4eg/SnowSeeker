@@ -14,6 +14,7 @@
 		0329B18C2825A21D001AAB35 /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0329B18B2825A21D001AAB35 /* Facility.swift */; };
 		0329B18E2825AAB6001AAB35 /* FacilityIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0329B18D2825AAB6001AAB35 /* FacilityIcon.swift */; };
 		0329B1902825B846001AAB35 /* Favourites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0329B18F2825B846001AAB35 /* Favourites.swift */; };
+		0329B1922825C736001AAB35 /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0329B1912825C736001AAB35 /* FileManager-DocumentsDirectory.swift */; };
 		0394E5C628241485005DAABC /* SnowSeekerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0394E5C528241485005DAABC /* SnowSeekerApp.swift */; };
 		0394E5C828241485005DAABC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0394E5C728241485005DAABC /* ContentView.swift */; };
 		0394E5CA28241486005DAABC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0394E5C928241486005DAABC /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 		0329B18B2825A21D001AAB35 /* Facility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
 		0329B18D2825AAB6001AAB35 /* FacilityIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityIcon.swift; sourceTree = "<group>"; };
 		0329B18F2825B846001AAB35 /* Favourites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favourites.swift; sourceTree = "<group>"; };
+		0329B1912825C736001AAB35 /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
 		0394E5C228241485005DAABC /* SnowSeeker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnowSeeker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0394E5C528241485005DAABC /* SnowSeekerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowSeekerApp.swift; sourceTree = "<group>"; };
 		0394E5C728241485005DAABC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				0394E5D928245C1E005DAABC /* Resort.swift */,
 				0329B18528254883001AAB35 /* ResortView.swift */,
 				0329B18F2825B846001AAB35 /* Favourites.swift */,
+				0329B1912825C736001AAB35 /* FileManager-DocumentsDirectory.swift */,
 				0329B18B2825A21D001AAB35 /* Facility.swift */,
 				0329B18D2825AAB6001AAB35 /* FacilityIcon.swift */,
 				0394E5C728241485005DAABC /* ContentView.swift */,
@@ -174,6 +177,7 @@
 				0329B18A28254B2B001AAB35 /* ResortDetailsView.swift in Sources */,
 				0329B18C2825A21D001AAB35 /* Facility.swift in Sources */,
 				0394E5C828241485005DAABC /* ContentView.swift in Sources */,
+				0329B1922825C736001AAB35 /* FileManager-DocumentsDirectory.swift in Sources */,
 				0394E5C628241485005DAABC /* SnowSeekerApp.swift in Sources */,
 				0329B1902825B846001AAB35 /* Favourites.swift in Sources */,
 				0329B18628254883001AAB35 /* ResortView.swift in Sources */,
