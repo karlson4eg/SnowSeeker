@@ -21,6 +21,7 @@ struct ContentView: View {
     let resorts: [Resort] = Bundle.main.decode("resorts.json")
     
     @State private var searchText = ""
+    @StateObject private var favourites = Favourites()
     
     var body: some View {
         NavigationView {
@@ -28,22 +29,7 @@ struct ContentView: View {
                 NavigationLink {
                     ResortView(resort: resort)
                 } label: {
-                    Image(resort.country)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 40, height: 25)
-                        .clipShape(RoundedRectangle(cornerRadius: 5))
-                        .overlay(
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(.black, lineWidth: 1)
-                        )
-                    
-                    VStack(alignment: .leading) {
-                        Text(resort.name)
-                            .font(.headline)
-                        Text("\(resort.runs) runs")
-                            .foregroundColor(.secondary)
-                    }
+                    self.resortLinkLabel(resort: resort)
                 }
             }
             .navigationBarTitle("Resorts")
@@ -51,7 +37,38 @@ struct ContentView: View {
             
             WelcomeView()
         }
-        
+        .environmentObject(favourites) // all views get access to it
+    }
+    
+    
+    func resortLinkLabel(resort: Resort) -> some View {
+        Group {
+            HStack{
+                Image(resort.country)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 40, height: 25)
+                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(.black, lineWidth: 1)
+                    )
+                
+                VStack(alignment: .leading) {
+                    Text(resort.name)
+                        .font(.headline)
+                    Text("\(resort.runs) runs")
+                        .foregroundColor(.secondary)
+                }
+                
+                if favourites.contains(resort) {
+                    Spacer()
+                    Image(systemName: "heart.fill")
+                        .accessibilityLabel("This is a favourite resort")
+                        .foregroundColor(.red)
+                }
+            }
+        }
     }
     
     var filteredResorts: [Resort] {

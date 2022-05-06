@@ -14,6 +14,11 @@ struct ResortView: View {
     @Environment(\.horizontalSizeClass) var sizeClass // normal iphone or big one
     @Environment(\.dynamicTypeSize) var typeSize // font size accessibility
     
+    @EnvironmentObject var favourites: Favourites
+    
+    @State private var selectedFacility: Facility?
+    @State private var showingFacility = false
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0){
@@ -41,14 +46,40 @@ struct ResortView: View {
                     Text("Facilities")
                         .font(.headline)
                     
-                    Text(resort.facilities.joined(separator: ", "))
-                        .padding(.vertical)
+                    HStack {
+                        ForEach(resort.facilityTypes) { facility in
+                            Button {
+                                selectedFacility = facility
+                                showingFacility = true
+                            } label: {
+                                facility.icon
+                                    .font(.title)
+                                    .accessibilityLabel(facility.name)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                    }
+                    
+                    Button(favourites.contains(resort) ? "Remove from favourites" : "Add to Favourites") {
+                        if favourites.contains(resort) {
+                            favourites.remove(resort)
+                        } else {
+                            favourites.add(resort)
+                        }
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .padding()
+                    
                 }
                 .padding(.horizontal)
             }
         }
         .navigationTitle("\(resort.name), \(resort.country)")
         .navigationBarTitleDisplayMode(.inline)
+        .alert(selectedFacility?.name ?? "More information", isPresented: $showingFacility, presenting: selectedFacility) { _ in
+        } message : { facility in
+            Text(facility.description)
+        }
     }
 }
 
@@ -57,5 +88,6 @@ struct ResortView_Previews: PreviewProvider {
         NavigationView{
             ResortView(resort: Resort.example)
         }
+        .environmentObject(Favourites())
     }
 }
