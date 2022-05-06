@@ -18,16 +18,20 @@ extension Bundle {
         }
         
         let decoder = JSONDecoder()
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "y-MM-dd"
-//        formatter.timeZone  
-//        decoder.dateDecodingStrategy = .formatted(formatter)
-        
-        guard let loaded = try? decoder.decode(T.self, from: data) else {
+
+        do{
+            let loaded = try decoder.decode(T.self, from: data)
+            return loaded
+            
+        } catch {
+            print(error)
             fatalError("Failed to decode \(file) in bundle")
         }
+//        guard let loaded = try? decoder.decode(T.self, from: data) else {
+//            fatalError("Failed to decode \(file) in bundle")
+//        }
 
-        return loaded
+        
     }
     
 }

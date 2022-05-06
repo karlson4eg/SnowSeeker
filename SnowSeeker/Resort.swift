@@ -18,7 +18,7 @@ struct Resort: Codable, Identifiable {
     let snowDepth: Int
     let elevation: Int
     let runs: Int
-    let fecilities: [String]
+    let facilities: [String]
     
     static let allResorts: [Resort] = Bundle.main.decode("resorts.json")
     static let example = allResorts[0]

@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+extension View { // in case we want to override default iphone max layout
+    @ViewBuilder func phoneOnlyNavigationView() -> some View {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            self.navigationViewStyle(.stack)
+        } else {
+            self
+        }
+    }
+}
 
 struct ContentView: View {
     let resorts: [Resort] = Bundle.main.decode("resorts.json")
@@ -15,7 +24,7 @@ struct ContentView: View {
         NavigationView {
             List(resorts) { resort in
                 NavigationLink {
-                    Text(resort.name)
+                    ResortView(resort: resort)
                 } label: {
                     Image(resort.country)
                         .resizable()
@@ -26,9 +35,20 @@ struct ContentView: View {
                         RoundedRectangle(cornerRadius: 5)
                             .stroke(.black, lineWidth: 1)
                         )
+                    
+                    VStack(alignment: .leading) {
+                        Text(resort.name)
+                            .font(.headline)
+                        Text("\(resort.runs) runs")
+                            .foregroundColor(.secondary)
+                    }
                 }
             }
+            .navigationBarTitle("Resorts")
+            
+            WelcomeView()
         }
+        
     }
 }
 
